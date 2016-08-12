@@ -1,0 +1,28 @@
+version: 0.0.1
+
+# Server Port Configuration
+server:
+  applicationConnectors:
+  - type: http
+    port: 9098
+  adminConnectors:
+  - type: http
+    port: 9099
+
+# Logging settings.
+logging:
+
+  loggers:
+    "org": ERROR
+    "hms": DEBUG
+
+  appenders:
+    - type: file
+      threshold: DEBUG
+      currentLogFilename: /hms/logs/dropwizard-sample/sample-app-debug.log
+      archivedLogFilenamePattern: /hms/logs/dropwizard-sample/sample-app-debug-%d{yyyy-MM-dd}.log.gz
+      archivedFileCount: 50
+      timeZone: UTC
+      logFormat: "%date{yyyy:MM:dd HH:mm:ss:SSS} %-5level %logger{1} [%X{id}] [%thread] - %msg %n"
+
+
